@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "Keyboard Blocker",
+  "version": "1.0",
+  "description": "Disable all keyboard input with one click or shortcut",
+  "permissions": ["scripting", "activeTab", "storage"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "icon.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "commands": {
+    "toggle-keyboard-block": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+K"
+      },
+      "description": "Toggle keyboard block"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ]
+}
