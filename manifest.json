@@ -3,7 +3,14 @@
   "name": "Keyboard Blocker",
   "version": "1.0",
   "description": "Disable all keyboard input with one click or shortcut",
-  "permissions": ["scripting", "activeTab", "storage"],
+  "permissions": [
+    "storage",
+    "scripting",
+    "tabs",
+    "notifications",
+    "commands"
+  ],
+  "host_permissions": ["<all_urls>"],
   "action": {
     "default_popup": "popup.html",
     "default_icon": "icon.png"

@@ -10,22 +10,36 @@
         --bg: #f8f9fa;
         --text: #202124;
         --border: #dadce0;
+        --dark-bg: #202124;
+        --dark-text: #e8eaed;
       }
 
       body {
-        font-family: "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        font-family: "Segoe UI", sans-serif;
         padding: 16px;
-        width: 200px;
+        width: 240px;
         background: var(--bg);
         color: var(--text);
         text-align: center;
+        transition: all 0.3s ease;
+      }
+
+      body.dark {
+        background: var(--dark-bg);
+        color: var(--dark-text);
+      }
+
+      .popup-wrapper {
+        border-radius: 12px;
+        padding: 16px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.19);
       }
 
       .header {
         display: flex;
         align-items: center;
         justify-content: center;
-        margin-bottom: 20px;
+        margin-bottom: 12px;
       }
 
       .logo {
@@ -34,79 +48,74 @@
         margin-right: 8px;
       }
 
-      .popup-wrapper {
-        background: var(--bg);
-        border-radius: 12px;
-        padding: 16px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.19);
-        }
-
       h4 {
         margin: 0;
         font-size: 16px;
         font-weight: 600;
-        color: var(--text);
       }
 
-      .toggle-container {
-        position: relative;
+      button {
         width: 100%;
-        margin: 20px 0;
-      }
-
-      #toggle {
-        width: 100%;
-        padding: 12px;
+        padding: 10px;
+        margin: 8px 0;
         border: none;
         border-radius: 6px;
-        font-weight: 500;
         font-size: 14px;
+        font-weight: 500;
         cursor: pointer;
-        transition: all 0.3s ease;
+        transition: background 0.3s;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
       }
 
-      #toggle.enabled {
+      button.enabled {
         background-color: var(--success);
-        color: white;
+        color: #fff;
       }
 
-      #toggle.disabled {
+      button.disabled {
         background-color: var(--danger);
-        color: white;
-      }
-
-      .status {
-        font-size: 12px;
-        color: #5f6368;
-        margin-top: 12px;
+        color: #fff;
       }
 
       .footer {
-        margin-top: 20px;
-        font-size: 10px;
+        margin-top: 12px;
+        font-size: 11px;
         color: #5f6368;
         border-top: 1px solid var(--border);
         padding-top: 8px;
+      }
+
+      .dark .footer {
+        color: #9aa0a6;
+        border-color: #5f6368;
+      }
+
+      .actions {
+        display: flex;
+        justify-content: space-between;
+        gap: 6px;
+      }
+
+      .actions button {
+        flex: 1;
       }
     </style>
   </head>
   <body>
     <div class="popup-wrapper">
       <div class="header">
-        <img src="icon.png" class="logo" alt="Keyboard Blocker" />
-        <h4>Keyboard Blocker</h4>
+        <img src="icon.png" class="logo" />
+        <h4>Input Blocker</h4>
       </div>
 
-      <div class="toggle-container">
-        <button id="toggle" class="disabled">DISABLED</button>
-        <div class="status">Click the button to block your keyboard</div>
-      </div>
-
+      <button id="toggle" class="disabled">Enable Keyboard Blocker</button>
+      <button id="mouseToggle" class="disabled">Enable Mouse Blocker</button>
+        <div class="actions">
+        <button id="darkToggle">Theme</button>
+        <button id="helpBtn">Help</button>
+        </div>
       <div class="footer">
-        <span class="shortcut"
-          >Shortcut: <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>K</kbd></span
-        >
+        Shortcut: <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>K</kbd>
       </div>
     </div>
     <script src="popup.js"></script>
